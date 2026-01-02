@@ -229,21 +229,31 @@
         let mouseY = 0;
         let glowX = 0;
         let glowY = 0;
+        let isVisible = false;
 
         // Track mouse position
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
+
+            if (!isVisible) {
+                isVisible = true;
+                glow.style.opacity = '1';
+                glowX = mouseX;
+                glowY = mouseY;
+            }
         });
 
         // Smooth animation using requestAnimationFrame
         function animate() {
-            // Lerp for smooth following
-            glowX += (mouseX - glowX) * 0.1;
-            glowY += (mouseY - glowY) * 0.1;
+            if (isVisible) {
+                // Lerp for smooth following
+                glowX += (mouseX - glowX) * 0.15;
+                glowY += (mouseY - glowY) * 0.15;
 
-            glow.style.setProperty('--mouse-x', `${glowX}px`);
-            glow.style.setProperty('--mouse-y', `${glowY}px`);
+                // Use transform for GPU acceleration (no repaints)
+                glow.style.transform = `translate3d(${glowX}px, ${glowY}px, 0)`;
+            }
 
             requestAnimationFrame(animate);
         }

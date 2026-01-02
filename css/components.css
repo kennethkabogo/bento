@@ -520,21 +520,21 @@
     transform: scale(1.02);
 }
 
-/* Cursor Glow Effect */
+/* Cursor Glow Effect - GPU Accelerated */
 .cursor-glow {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, transparent 70%);
     pointer-events: none;
     z-index: 9999;
-    opacity: 0.15;
-    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-            rgba(99, 102, 241, 0.4),
-            transparent 40%);
+    opacity: 0;
     mix-blend-mode: screen;
-    transition: opacity 0.3s ease;
+    transform: translate3d(-50%, -50%, 0);
+    will-change: transform;
 }
 
 /* Disable cursor glow on mobile */
