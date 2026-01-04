@@ -74,7 +74,7 @@ bento/
 - **Dark Theme** – Modern dark color scheme
 - **Custom Typography** – Inter font family
 
-## About
+
 
 Card.io is a premium, customizable digital business card and link‑in‑bio solution built with vanilla HTML, CSS, and JavaScript, featuring glass‑morphism, dark mode, and instant shareable links.
 
