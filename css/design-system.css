@@ -31,7 +31,7 @@
   --color-gradient-cool: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
 
   /* Social Platform Colors */
-  --color-twitter: #1DA1F2;
+  --color-x: #000000;
   --color-github: #171515;
   --color-linkedin: #0077B5;
   --color-youtube: #FF0000;
@@ -146,6 +146,8 @@
     --color-text-primary: #ffffff;
     --color-text-secondary: #a0a0a0;
     --color-text-tertiary: #666666;
+    --color-github: #ffffff;
+    --color-x: #ffffff;
 
     --glass-bg: rgba(30, 30, 30, 0.4);
     --glass-border: rgba(255, 255, 255, 0.08);
@@ -188,6 +190,8 @@
   --color-text-primary: #ffffff;
   --color-text-secondary: #cce0ff;
   --color-text-tertiary: #a0c4ff;
+  --color-github: #ffffff;
+  --color-x: #ffffff;
   --glass-bg: rgba(1, 31, 53, 0.4);
   --glass-border: rgba(0, 198, 255, 0.3);
 }
@@ -207,6 +211,8 @@
   --color-text-primary: #ffffff;
   --color-text-secondary: #ffdcdc;
   --color-text-tertiary: #ffb8b8;
+  --color-github: #ffffff;
+  --color-x: #ffffff;
   --glass-bg: rgba(61, 13, 13, 0.4);
   --glass-border: rgba(255, 81, 47, 0.3);
 }
