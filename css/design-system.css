@@ -39,9 +39,10 @@
   --color-instagram: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
 
   /* Glass Effects */
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.18);
-  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
+  --glass-blur: 16px;
 
   /* ============ TYPOGRAPHY ============ */
   --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -124,6 +125,11 @@
   --z-sticky: 200;
   --z-modal: 1000;
   --z-tooltip: 1100;
+
+  /* ============ DYNAMIC VARIABLES ============ */
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --spotlight-color: rgba(91, 76, 245, 0.15);
 }
 
 /* ============ DARK MODE ============ */
@@ -141,9 +147,10 @@
     --color-text-secondary: #a0a0a0;
     --color-text-tertiary: #666666;
 
-    --glass-bg: rgba(31, 31, 31, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --glass-bg: rgba(30, 30, 30, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    --spotlight-color: rgba(255, 255, 255, 0.08);
   }
 }
 
@@ -164,6 +171,34 @@
   --glass-bg: rgba(31, 31, 31, 0.7);
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Aurora Theme */
+.theme-aurora {
+  --color-bg-primary: #000814;
+  --color-bg-secondary: #001d3d;
+  --color-accent-primary: #00c6ff;
+  --color-accent-secondary: #0072ff;
+  --spotlight-color: rgba(0, 198, 255, 0.15);
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a0c4ff;
+  --color-surface: #00132a;
+  --glass-bg: rgba(0, 29, 61, 0.5);
+  --glass-border: rgba(0, 198, 255, 0.2);
+}
+
+/* Sunset Theme */
+.theme-sunset {
+  --color-bg-primary: #120000;
+  --color-bg-secondary: #240000;
+  --color-accent-primary: #ff512f;
+  --color-accent-secondary: #dd2476;
+  --spotlight-color: rgba(255, 81, 47, 0.15);
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #ffb8b8;
+  --color-surface: #300000;
+  --glass-bg: rgba(36, 0, 0, 0.5);
+  --glass-border: rgba(255, 81, 47, 0.2);
 }
 
 /* ============ BASE RESET ============ */

@@ -33,9 +33,27 @@
 }
 
 .tile:hover {
-    transform: translateY(-4px) scale(1.02);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
     border-color: var(--color-border-hover);
+}
+
+/* Spotlight Effect */
+.tile-spotlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
+            var(--spotlight-color),
+            transparent 40%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.tile-spotlight:hover::before {
+    opacity: 1;
 }
 
 /* Tile Sizes */
@@ -66,9 +84,10 @@
 /* Tile Variants */
 .tile-glass {
     background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
 .tile-gradient {

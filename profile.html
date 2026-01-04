@@ -10,6 +10,122 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/design-system.css">
   <link rel="stylesheet" href="css/components.css">
+  <style>
+    /* Widget Specific Styles */
+    .tile-time {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: var(--color-bg-tertiary);
+    }
+
+    .time-value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+    }
+
+    .time-status {
+      font-size: var(--font-size-xs);
+      color: var(--color-accent-primary);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+
+    .stack-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      color: var(--color-text-tertiary);
+      transition: all var(--transition-base);
+    }
+
+    .stack-item svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-text-secondary);
+    }
+
+    .stack-item:hover {
+      transform: scale(1.1);
+      color: var(--color-accent-primary);
+    }
+
+    .stack-item:hover svg {
+      color: var(--color-accent-primary);
+    }
+
+    .pulse {
+      animation: pulse-anim 2s infinite;
+    }
+
+    @keyframes pulse-anim {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Theme Switcher Styles */
+    .theme-switcher {
+      position: absolute;
+      top: var(--space-md);
+      right: var(--space-md);
+      display: flex;
+      gap: 4px;
+      background: var(--glass-bg);
+      padding: 4px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(8px);
+    }
+
+    .theme-btn {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .theme-btn.active {
+      border-color: var(--color-text-primary);
+    }
+
+    .theme-btn[data-theme="default"] {
+      background: #5B4CF5;
+    }
+
+    .theme-btn[data-theme="aurora"] {
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+    }
+
+    .theme-btn[data-theme="sunset"] {
+      background: linear-gradient(to right, #ff512f, #dd2476);
+    }
+  </style>
 
   <!-- Favicon -->
   <link rel="icon"
@@ -18,7 +134,12 @@
 
 <body>
   <!-- Profile Page -->
-  <div id="page-container">
+  <div id="page-container" class="cursor-glow-container">
+    <div class="theme-switcher">
+      <button class="theme-btn" data-theme="default" title="Default Theme"></button>
+      <button class="theme-btn" data-theme="aurora" title="Aurora Theme"></button>
+      <button class="theme-btn" data-theme="sunset" title="Sunset Theme"></button>
+    </div>
 
     <!-- Profile Header -->
     <header class="profile-header">
@@ -56,6 +177,61 @@
         </div>
         <button class="follow-button">Follow</button>
       </a>
+
+      <!-- Time Widget -->
+      <div class="tile tile-1x1 tile-time tile-glass tile-spotlight">
+        <div class="time-value" id="current-time">00:00</div>
+        <div class="time-status">Available Now</div>
+        <div id="current-date" style="font-size: 10px; margin-top: 5px; opacity: 0.6;">Jan 1, 2024</div>
+      </div>
+
+      <!-- Tech Stack Widget -->
+      <div class="tile tile-2x1 tile-glass tile-spotlight">
+        <div class="tile-title" style="font-size: var(--font-size-base)">Tech Stack</div>
+        <div class="stack-grid">
+          <div class="stack-item">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>React
+          </div>
+          <div class="stack-item">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9l-7-7z" />
+              <path d="M13 2v7h7" />
+            </svg>Node.js
+          </div>
+          <div class="stack-item">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+            </svg>Next.js
+          </div>
+          <div class="stack-item">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 3h18v18H3V3z" />
+            </svg>Tailwind
+          </div>
+          <div class="stack-item">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="12" cy="12" r="10" />
+            </svg>Figma
+          </div>
+          <div class="stack-item">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l10 10-10 10L2 12 12 2z" />
+            </svg>Swift
+          </div>
+          <div class="stack-item">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+            </svg>TS
+          </div>
+          <div class="stack-item">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+            </svg>AI
+          </div>
+        </div>
+      </div>
 
       <!-- Portfolio Link Tile -->
       <a href="https://alexrivera.dev" class="tile tile-1x1 tile-link" target="_blank" rel="noopener">
@@ -214,6 +390,7 @@
 
   <!-- JavaScript -->
   <script src="js/interactions.js"></script>
+  <script src="js/dynamic-widgets.js"></script>
   <script src="script.js"></script>
 </body>
 
