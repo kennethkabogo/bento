@@ -37,12 +37,32 @@ function initTechStack() {
     const stackItems = document.querySelectorAll('.stack-item');
     if (stackItems.length === 0) return;
 
-    // Optional: Add a subtle pulse animation to a random item setiap 3 detik
+    // Pulse animation for tech stack
     setInterval(() => {
         const randomItem = stackItems[Math.floor(Math.random() * stackItems.length)];
         randomItem.classList.add('pulse');
         setTimeout(() => randomItem.classList.remove('pulse'), 2000);
     }, 5000);
+
+    // Initial skill bar animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const progressBars = entry.target.querySelectorAll('.skill-progress');
+                progressBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    const techStackTile = document.querySelector('[data-id="tech-stack"]');
+    if (techStackTile) observer.observe(techStackTile);
 }
 
 /**

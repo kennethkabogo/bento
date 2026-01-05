@@ -50,9 +50,10 @@ function initTileAnimations() {
     entries.forEach((entry, index) => {
       if (entry.isIntersecting) {
         setTimeout(() => {
+          entry.target.classList.add('reveal');
           entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }, index * 50);
+          entry.target.style.transform = entry.target.style.transform.replace('translateY(20px)', 'translateY(0)');
+        }, index * 100);
         observer.unobserve(entry.target);
       }
     });
@@ -60,8 +61,8 @@ function initTileAnimations() {
 
   tiles.forEach((tile) => {
     tile.style.opacity = '0';
-    tile.style.transform = 'translateY(20px)';
-    tile.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    tile.style.transform = (tile.style.transform || '') + ' translateY(20px)';
+    tile.style.transition = 'opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
     observer.observe(tile);
   });
 }
@@ -255,6 +256,30 @@ function initKeyboardNav() {
   });
 }
 
+// ============ MAGNETIC BUTTON EFFECT ============
+function initMagneticButtons() {
+  const magneticWraps = document.querySelectorAll('.magnetic-wrap');
+
+  magneticWraps.forEach(wrap => {
+    const btn = wrap.querySelector('button, a');
+    if (!btn) return;
+
+    wrap.addEventListener('mousemove', (e) => {
+      const rect = wrap.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+
+      wrap.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+      if (btn) btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+    });
+
+    wrap.addEventListener('mouseleave', () => {
+      wrap.style.transform = '';
+      if (btn) btn.style.transform = '';
+    });
+  });
+}
+
 // ============ INITIALIZE ALL ============
 document.addEventListener('DOMContentLoaded', () => {
   initCursorGlow();
@@ -265,8 +290,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initLazyLoading();
   initStatsAnimation();
   initKeyboardNav();
+  initMagneticButtons();
 
-  console.log('🎨 Bento initialized!');
+  console.log('🎨 Bento initialized with pizzazz!');
 });
 
 // ============ PERFORMANCE OPTIMIZATION ============

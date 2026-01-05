@@ -68,6 +68,29 @@
       color: var(--color-accent-primary);
     }
 
+    /* Skill Bar Styling */
+    .skill-bar {
+      width: 100%;
+      height: 4px;
+      background: var(--color-border);
+      border-radius: var(--radius-full);
+      margin-top: 4px;
+      overflow: hidden;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: var(--color-accent-primary);
+      border-radius: var(--radius-full);
+      transition: width 1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+      width: 0;
+      /* Initial state for animation */
+    }
+
+    .tile:hover .skill-progress {
+      filter: brightness(1.2);
+    }
+
     .pulse {
       animation: pulse-anim 2s infinite;
     }
@@ -160,7 +183,8 @@
     <main class="bento-grid container">
 
       <!-- X Tile -->
-      <a href="https://x.com/alexrivera" class="tile tile-1x1 tile-social" target="_blank" rel="noopener">
+      <a href="https://x.com/alexrivera" data-id="x-social" class="tile tile-1x1 tile-social float-slow" target="_blank"
+        rel="noopener">
         <div class="social-platform-icon social-x">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path
@@ -174,66 +198,93 @@
             <div class="social-stat-label">Followers</div>
           </div>
         </div>
-        <button class="follow-button">Follow</button>
+        <div class="magnetic-wrap">
+          <button class="follow-button">Follow</button>
+        </div>
       </a>
 
       <!-- Time Widget -->
-      <div class="tile tile-1x1 tile-time tile-glass tile-spotlight">
+      <div data-id="time-widget" class="tile tile-1x1 tile-time tile-glass tile-spotlight">
         <div class="time-value" id="current-time">00:00</div>
         <div class="time-status">Available Now</div>
-        <div id="current-date" style="font-size: 10px; margin-top: 5px; opacity: 0.6;">Jan 1, 2024</div>
+        <div id="current-date" class="text-tertiary" style="font-size: 10px; margin-top: 5px;">Jan 1, 2024</div>
       </div>
 
       <!-- Tech Stack Widget -->
-      <div class="tile tile-2x1 tile-glass tile-spotlight">
+      <div data-id="tech-stack" class="tile tile-2x1 tile-glass tile-spotlight float-medium">
         <div class="tile-title" style="font-size: var(--font-size-base)">Tech Stack</div>
         <div class="stack-grid">
           <div class="stack-item">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
             </svg>React
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 90%;"></div>
+            </div>
           </div>
           <div class="stack-item">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9l-7-7z" />
               <path d="M13 2v7h7" />
             </svg>Node.js
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 85%;"></div>
+            </div>
           </div>
           <div class="stack-item">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2L2 7l10 5 10-5-10-5z" />
             </svg>Next.js
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 80%;"></div>
+            </div>
           </div>
           <div class="stack-item">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M3 3h18v18H3V3z" />
             </svg>Tailwind
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 95%;"></div>
+            </div>
           </div>
           <div class="stack-item">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <circle cx="12" cy="12" r="10" />
             </svg>Figma
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 75%;"></div>
+            </div>
           </div>
           <div class="stack-item">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2l10 10-10 10L2 12 12 2z" />
             </svg>Swift
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 60%;"></div>
+            </div>
           </div>
           <div class="stack-item">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2L2 7l10 5 10-5-10-5z" />
             </svg>TS
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 85%;"></div>
+            </div>
           </div>
           <div class="stack-item">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2L2 7l10 5 10-5-10-5z" />
             </svg>AI
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 70%;"></div>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Portfolio Link Tile -->
-      <a href="https://alexrivera.dev" class="tile tile-1x1 tile-link" target="_blank" rel="noopener">
+      <a href="https://alexrivera.dev" data-id="portfolio-link" class="tile tile-1x1 tile-link float-fast"
+        target="_blank" rel="noopener">
         <div class="link-icon">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
@@ -246,7 +297,8 @@
       </a>
 
       <!-- GitHub Tile -->
-      <a href="https://github.com/alexrivera" class="tile tile-1x1 tile-social" target="_blank" rel="noopener">
+      <a href="https://github.com/alexrivera" data-id="github-social" class="tile tile-1x1 tile-social float-medium"
+        target="_blank" rel="noopener">
         <div class="social-platform-icon social-github">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path
@@ -260,16 +312,19 @@
             <div class="social-stat-label">Followers</div>
           </div>
         </div>
-        <button class="follow-button">Follow</button>
+        <div class="magnetic-wrap">
+          <button class="follow-button">Follow</button>
+        </div>
       </a>
 
       <!-- Workspace Image Tile -->
-      <div class="tile tile-2x1 tile-image">
+      <div data-id="workspace-image" class="tile tile-2x1 tile-image">
         <img src="assets/images/workspace.png" alt="Creative workspace">
       </div>
 
       <!-- LinkedIn Tile -->
-      <a href="https://linkedin.com/in/alexrivera" class="tile tile-1x1 tile-social" target="_blank" rel="noopener">
+      <a href="https://linkedin.com/in/alexrivera" data-id="linkedin-social" class="tile tile-1x1 tile-social"
+        target="_blank" rel="noopener">
         <div class="social-platform-icon social-linkedin">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path
@@ -287,7 +342,8 @@
       </a>
 
       <!-- Blog Link Tile -->
-      <a href="https://blog.alexrivera.dev" class="tile tile-1x1 tile-link" target="_blank" rel="noopener">
+      <a href="https://blog.alexrivera.dev" data-id="blog-link" class="tile tile-1x1 tile-link" target="_blank"
+        rel="noopener">
         <div class="link-icon">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -379,6 +435,19 @@
 
     </main>
 
+    <!-- Edit Controls -->
+    <div class="edit-controls">
+      <button id="edit-layout-toggle" class="edit-toggle" title="Edit Layout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12h14" />
+        </svg>
+        <span>Edit Layout</span>
+      </button>
+      <button id="reset-layout-btn" class="reset-layout" title="Reset Layout" style="display: none;">
+        <span>Reset</span>
+      </button>
+    </div>
+
     <!-- Footer -->
     <footer
       style="text-align: center; padding: var(--space-2xl) var(--space-md); color: var(--color-text-tertiary); font-size: var(--font-size-sm);">
@@ -388,8 +457,10 @@
   </div>
 
   <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
   <script src="js/interactions.js"></script>
   <script src="js/dynamic-widgets.js"></script>
+  <script src="js/drag-drop.js"></script>
   <script src="script.js"></script>
 </body>
 
